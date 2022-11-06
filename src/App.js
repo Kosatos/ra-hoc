@@ -9,16 +9,13 @@ import SortTableWithDate from './components/aggregation/SortTable'
 import dataTime from './data/dataTime'
 import dataHighlight from './data/dataHighlight'
 
-const aggrUrl =
-  'https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hoc/aggregation/data/data.json'
-
 export default function App() {
   const [videos, setVideos] = useState(dataTime)
   const [list, setList] = useState(dataHighlight)
   const [data, setData] = useState([])
 
   const fetchData = async () => {
-    const response = await fetch(aggrUrl)
+    const response = await fetch(process.env.REACT_APP_AGGR_URL)
     const json = await response.json()
     setData((prev) => json.list)
   }
